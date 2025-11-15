@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Istanbul Metro Route Planner</title>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🚇 Istanbul Metro Route Planner</h1>
+            <p>Find the fastest route between metro stations</p>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="control-panel">
+                    <h2>Route Planning</h2>
+
+                    <!-- Station Selection -->
+                    <div class="station-selector">
+                        <div class="input-group">
+                            <label for="start-station">Start Station</label>
+                            <input type="text" id="start-station" placeholder="Search or click on map..." readonly>
+                            <button id="clear-start" class="clear-btn" title="Clear">×</button>
+                        </div>
+
+                        <div class="swap-btn-container">
+                            <button id="swap-stations" class="swap-btn" title="Swap stations">⇅</button>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="end-station">End Station</label>
+                            <input type="text" id="end-station" placeholder="Search or click on map..." readonly>
+                            <button id="clear-end" class="clear-btn" title="Clear">×</button>
+                        </div>
+                    </div>
+
+                    <!-- Search Button -->
+                    <button id="find-route" class="btn-primary" disabled>Find Route</button>
+
+                    <!-- Route Information -->
+                    <div id="route-info" class="route-info" style="display: none;">
+                        <h3>Route Details</h3>
+                        <div class="stats">
+                            <div class="stat-item">
+                                <span class="stat-label">Distance</span>
+                                <span class="stat-value" id="total-distance">-</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Time</span>
+                                <span class="stat-value" id="total-time">-</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Stations</span>
+                                <span class="stat-value" id="num-stations">-</span>
+                            </div>
+                        </div>
+
+                        <div id="route-steps" class="route-steps"></div>
+
+                        <button id="animate-route" class="btn-secondary">Animate Route</button>
+                        <button id="clear-route" class="btn-danger">Clear Route</button>
+                    </div>
+
+                    <!-- Legend -->
+                    <div class="legend">
+                        <h3>Metro Lines</h3>
+                        <div id="line-legend" class="line-list"></div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Map Container -->
+            <main class="map-container">
+                <div id="map"></div>
+                <div id="loading" class="loading">
+                    <div class="spinner"></div>
+                    <p>Loading metro data...</p>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Custom JS -->
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
